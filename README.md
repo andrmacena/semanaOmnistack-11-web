@@ -4,7 +4,9 @@
 </h2>  
 
 <p align="center">
-  <img alt="desktop" src="../.github/Desktop.gif" width="700px">
+  <img alt="desktop" src="./public/preview-readme/logon.png" width="1000px">
+  <img alt="desktop" src="./public/preview-readme/register.png" width="1000px">
+  <img alt="desktop" src="./public/preview-readme/profile.png" width="1000px">
 </p>
 <p align="center">
   <img alt="GitHub language count" src="https://img.shields.io/github/languages/count/andrmacena/semanaOmnistack-11-web?color=%2304D361">
