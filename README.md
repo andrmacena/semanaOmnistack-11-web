@@ -69,4 +69,4 @@ This project is under the MIT license. See the [LICENSE](LICENSE.md) for details
 
 ---
 
-Made with ♥ by Daniel Obara :wave: [Get in touch!](https://www.linkedin.com/in/andr%C3%A9-macena-15275b12b/)
+Made by André Macena :wave: [Get in touch!](https://www.linkedin.com/in/andr%C3%A9-macena-15275b12b/)
