@@ -50,7 +50,7 @@ This project was developed with the following technologies:
 
 ## 💻 Project
 
-Be The Hero is a project that aims to connect people who are willing to help ONGs.
+Be The Hero is a project developed during Omnistack week given by [Rockeseat](https://rocketseat.com.br/), that aims to connect people who are willing to help ONGs.
 
 ## 🔖 Layout
 
