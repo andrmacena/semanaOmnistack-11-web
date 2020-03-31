@@ -40,6 +40,11 @@ Be the Hero
 
 <br>
 
+## Deploy
+
+This project is live on Netlify, to access go to 
+
+https://bethehero-andrmacena.netlify.com/
 
 ## :rocket: Technologies
 
