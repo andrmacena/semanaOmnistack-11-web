@@ -51,11 +51,11 @@ https://bethehero-andrmacena.netlify.com/
 This project was developed with the following technologies:
 
 - [Node.js](https://nodejs.org/en/) 
-- [React](https://reactjs.org)
+- [ReactJS](https://reactjs.org)
 
 ## 💻 Project
 
-Be The Hero is a project developed during Omnistack week given by [Rockeseat](https://rocketseat.com.br/), that aims to connect people who are willing to help ONGs.
+Be The Hero is a project developed during Omnistack week given by [Rocketseat](https://rocketseat.com.br/), that aims to connect people who are willing to help ONGs.
 
 ## 🔖 Layout
 
