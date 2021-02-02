@@ -1,6 +1,8 @@
 import React, { useState } from 'react'
 import { Link, useHistory } from 'react-router-dom'
 import { FiArrowLeft } from 'react-icons/fi'
+import InputMask from 'react-input-mask';
+// import { useForm } from 'react-hook-form';
 
 import api from '../../services/api'
 
@@ -16,13 +18,19 @@ function Register() {
 
    const history = useHistory()
 
-   async function handleRegister(e) {
+   // const { register, handleSubmit, errors } = useForm()
+
+   const handleRegister = async (e) => {
       e.preventDefault()
+
+      const whats = whatsapp.replace(/[^0-9]+/g, '')
+
+      // console.log(dados)
 
       const data = {
          name,
          email,
-         whatsapp,
+         whatsapp: whats,
          city,
          uf
       }
@@ -32,7 +40,7 @@ function Register() {
          const res = await api.post('/ongs', data)
 
          alert(`Seu ID de acesso: ${res.data}`)
-         
+
          history.push('/')
       } catch (error) {
          alert('Erro no cadastro, tente novamente')
@@ -56,7 +64,10 @@ function Register() {
             </section>
             <form onSubmit={handleRegister}>
                <input
+                  // ref={register({ required: true })}
+                  name='name'
                   placeholder="Nome da ONG"
+                  // value={name ? name : errors.name && 'Nome é obrigatório'}
                   value={name}
                   onChange={e => setName(e.target.value)}
                />
@@ -66,10 +77,12 @@ function Register() {
                   value={email}
                   onChange={e => setEmail(e.target.value)}
                />
-               <input
-                  placeholder="Whatsapp"
+               <InputMask
+                  mask='(99)99999-9999'
                   value={whatsapp}
                   onChange={e => setWhatsapp(e.target.value)}
+                  placeholder="Whatsapp"
+                  alwaysShowMask={false}
                />
 
                <div className="input-group">
@@ -89,7 +102,7 @@ function Register() {
 
             </form>
          </div>
-      </div>
+      </div >
    )
 }
 
