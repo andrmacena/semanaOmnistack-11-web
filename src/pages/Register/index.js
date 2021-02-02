@@ -2,7 +2,6 @@ import React, { useState } from 'react'
 import { Link, useHistory } from 'react-router-dom'
 import { FiArrowLeft } from 'react-icons/fi'
 import InputMask from 'react-input-mask';
-// import { useForm } from 'react-hook-form';
 
 import api from '../../services/api'
 
@@ -18,14 +17,10 @@ function Register() {
 
    const history = useHistory()
 
-   // const { register, handleSubmit, errors } = useForm()
-
    const handleRegister = async (e) => {
       e.preventDefault()
 
       const whats = whatsapp.replace(/[^0-9]+/g, '')
-
-      // console.log(dados)
 
       const data = {
          name,
@@ -44,11 +39,9 @@ function Register() {
          history.push('/')
       } catch (error) {
          alert('Erro no cadastro, tente novamente')
-
       }
-
-
    }
+
    return (
       <div className="register-container">
          <div className="content">
@@ -64,18 +57,19 @@ function Register() {
             </section>
             <form onSubmit={handleRegister}>
                <input
-                  // ref={register({ required: true })}
                   name='name'
                   placeholder="Nome da ONG"
-                  // value={name ? name : errors.name && 'Nome é obrigatório'}
                   value={name}
                   onChange={e => setName(e.target.value)}
+                  minLength={4}
+                  required={true}
                />
                <input
                   type="email"
                   placeholder="E-mail"
                   value={email}
                   onChange={e => setEmail(e.target.value)}
+                  required={true}
                />
                <InputMask
                   mask='(99)99999-9999'
@@ -83,6 +77,7 @@ function Register() {
                   onChange={e => setWhatsapp(e.target.value)}
                   placeholder="Whatsapp"
                   alwaysShowMask={false}
+                  required={true}
                />
 
                <div className="input-group">
@@ -90,12 +85,15 @@ function Register() {
                      placeholder="Cidade"
                      value={city}
                      onChange={e => setCity(e.target.value)}
+                     required={true}
                   />
                   <input
                      placeholder="UF"
                      style={{ width: 80 }}
                      value={uf}
                      onChange={e => setUf(e.target.value)}
+                     maxLength={2}
+                     required={true}               
                   />
                </div>
                <button type="submit" className="button">Cadastrar</button>

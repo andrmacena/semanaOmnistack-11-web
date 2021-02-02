@@ -43,6 +43,7 @@ function Logon() {
                   placeholder="Sua ID"
                   value={id}
                   onChange={e => setId(e.target.value)}
+                  required={true}
                />
                <button className="button" type="submit">Entrar</button>
 
