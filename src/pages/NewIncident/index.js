@@ -1,6 +1,7 @@
 import React, { useState } from 'react'
 import { Link, useHistory } from 'react-router-dom'
 import { FiArrowLeft } from 'react-icons/fi'
+import { useAlert } from "react-alert"
 
 import api from '../../services/api'
 
@@ -15,6 +16,7 @@ function NewIncident() {
    const [value, setValue] = useState('')
 
    const history = useHistory()
+   const alertReact = useAlert()
 
    async function handleNewInident(e) {
       e.preventDefault()
@@ -36,7 +38,7 @@ function NewIncident() {
          history.push('/profile')
 
       } catch (error) {
-         alert('Erro em cadastrar caso')
+         alertReact.error('Erro em cadastrar caso')
 
       }
 

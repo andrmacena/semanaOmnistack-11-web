@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import { Link, useHistory } from 'react-router-dom'
 import { FiPower, FiTrash2 } from 'react-icons/fi'
+import { useAlert } from "react-alert"
 
 import api from '../../services/api'
 
@@ -14,6 +15,7 @@ function Profile() {
    const ongId = localStorage.getItem('ongId')
 
    const history = useHistory()
+   const alertReact = useAlert()
 
    useEffect(() => {
       api.get('/ong/incidents', {
@@ -38,7 +40,7 @@ function Profile() {
          setIncidents(incidents.filter(incident => incident.id !== id))
 
       } catch (error) {
-         alert('Erro ao deletar caso')
+         alertReact.error('Erro ao deletar caso')
       }
    }
 

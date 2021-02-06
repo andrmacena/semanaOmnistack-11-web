@@ -1,6 +1,7 @@
 import React, { useState } from 'react'
 import { Link, useHistory } from 'react-router-dom'
 import { FiLogIn } from 'react-icons/fi'
+import { useAlert } from "react-alert"
 
 import api from '../../services/api'
 
@@ -14,20 +15,20 @@ function Logon() {
    const [id, setId] = useState('')
 
    const history = useHistory()
+   const alertReact = useAlert()
 
    async function handleLogin(e) {
       e.preventDefault()
 
       try {
          const res = await api.post('/session', { id })
-         console.log(res)
 
          localStorage.setItem('ongId', id)
          localStorage.setItem('ongName', res.data.Name)
 
          history.push('/profile')
       } catch (error) {
-         alert('Falha no login')
+         alertReact.error('Falha no login')
 
       }
 

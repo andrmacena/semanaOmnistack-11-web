@@ -1,7 +1,8 @@
 import React, { useState } from 'react'
 import { Link, useHistory } from 'react-router-dom'
 import { FiArrowLeft } from 'react-icons/fi'
-import InputMask from 'react-input-mask';
+import InputMask from 'react-input-mask'
+import { useAlert } from "react-alert"
 
 import api from '../../services/api'
 
@@ -16,6 +17,7 @@ function Register() {
    const [uf, setUf] = useState('')
 
    const history = useHistory()
+   const alertReact = useAlert()
 
    const handleRegister = async (e) => {
       e.preventDefault()
@@ -32,13 +34,13 @@ function Register() {
 
       try {
 
-         const res = await api.post('/ongs', data)
+         await api.post('/ongs', data)
 
-         alert(`Seu ID de acesso: ${res.data}`)
+         alertReact.info('Você receberá seu ID de acesso pelo email em instantes')
 
          history.push('/')
       } catch (error) {
-         alert('Erro no cadastro, tente novamente')
+         alertReact.error('Erro no cadastro, tente novamente')
       }
    }
 
