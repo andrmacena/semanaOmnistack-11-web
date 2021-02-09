@@ -56,6 +56,7 @@ function Profile() {
             <span>Bem vinda, {ongName}</span>
 
             <Link className="button" to="/incidents/new">Cadastar novo caso</Link>
+            <Link className="button" to="/aboutme" style={{ width: 160, marginLeft: 16 }}>Sobre mim</Link>
             <button onClick={handleLogout} type="button">
                <FiPower size={18} color="#e02041" />
             </button>
