@@ -1,7 +1,8 @@
 import React, { useState } from 'react'
 import { Link, useHistory } from 'react-router-dom'
-import { FiArrowLeft } from 'react-icons/fi'
-import { useAlert } from "react-alert"
+import { FiArrowLeft, FiFileMinus } from 'react-icons/fi'
+import { useAlert } from 'react-alert'
+import { FileDrop } from 'react-file-drop'
 
 import api from '../../services/api'
 
@@ -11,7 +12,7 @@ import logoImg from '../../assets/logo.svg'
 function AboutMe() {
    const ongId = localStorage.getItem('ongId')
 
-   const [image, setImage] = useState('')
+   const [url_image, setImage] = useState('')
    const [description, setDescription] = useState('')
 
    const history = useHistory()
@@ -22,7 +23,7 @@ function AboutMe() {
 
       const data = {
          description,
-         image
+         url_image
       }
 
       try {
@@ -42,8 +43,22 @@ function AboutMe() {
 
    }
 
+   const handleImage = (file, event) => {
+
+      const arquivo = file[0]
+
+      var reader = new FileReader()
+
+      reader.readAsDataURL(arquivo)
+
+      reader.onload = function () {
+         setImage(reader.result)
+      }
+
+   }
+
    return (
-      <div className="new-incident-container">
+      <div className="aboutme-container">
          <div className="content">
             <section>
                <img src={logoImg} alt="Be The Hero" />
@@ -51,19 +66,22 @@ function AboutMe() {
                <p>Descreva sua ONG ou projeto social com o intuito de divulgar o seu trabalho para o público</p>
 
                <Link className="back-link" to="/profile">
-                  <FiArrowLeft size={16} color="#e02041" />
+                  <FiArrowLeft className="arrow-left"/>
                   Voltar para home
                </Link>
             </section>
             <form onSubmit={handleAddNewImage}>
-            <input
-                  placeholder="Arraste e solte a imagem"
-                  value={image}
-                  onChange={e => { setImage(e.target.value) }}
-                  required={true}
-               />
+               <div className="file-drop">
+                  <FileDrop
+                     onDrop={(files, event) => {
+                        handleImage(files, event)
+                        alertReact.success('Imagem adicionada!')
+                     }}
+                  >Arraste e solte a imagem aqui! <FiFileMinus className="file-minus" />
+                  </FileDrop>
+               </div>
                <textarea
-                  placeholder="Descreva sua ONG/Projeto Social"
+                  placeholder="Descrição da imagem"
                   value={description}
                   onChange={e => { setDescription(e.target.value) }}
                   required={true}
