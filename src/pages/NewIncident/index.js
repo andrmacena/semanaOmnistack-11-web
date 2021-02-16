@@ -35,7 +35,7 @@ function NewIncident() {
                }
             })
 
-         history.push('/profile')
+         history.push('/home')
 
       } catch (error) {
          alertReact.error('Erro em cadastrar caso')
@@ -52,7 +52,7 @@ function NewIncident() {
                <h1>Cadastrar novo caso</h1>
                <p>Descreva o caso detalhadamento para encontrar um herói para resolver isso</p>
 
-               <Link className="back-link" to="/profile">
+               <Link className="back-link" to="/home">
                   <FiArrowLeft size={16} color="#e02041" />
                   Voltar para home
                </Link>
