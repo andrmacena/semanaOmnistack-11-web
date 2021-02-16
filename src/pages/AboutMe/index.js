@@ -1,98 +1,82 @@
-import React, { useState } from 'react'
+import React from 'react'
 import { Link, useHistory } from 'react-router-dom'
-import { FiArrowLeft, FiFileMinus } from 'react-icons/fi'
-import { useAlert } from 'react-alert'
-import { FileDrop } from 'react-file-drop'
+import { FiPower, FiTrash2 } from 'react-icons/fi'
+import { useAlert } from "react-alert"
 
-import api from '../../services/api'
-
-import './styles.css'
 import logoImg from '../../assets/logo.svg'
+import './styles.css'
 
 function AboutMe() {
-   const ongId = localStorage.getItem('ongId')
 
-   const [url_image, setImage] = useState('')
-   const [description, setDescription] = useState('')
+   const ongName = localStorage.getItem('ongName')
 
    const history = useHistory()
-   const alertReact = useAlert()
 
-   async function handleAddNewImage(e) {
-      e.preventDefault()
 
-      const data = {
-         description,
-         url_image
-      }
+   const incidents = [{
+      id: 1,
+      title: 'Teste',
+      description: 'Descricao teste',
+      value: 300
+   },
+   {
+      id: 2,
+      title: 'Teste 2',
+      description: 'Descricao teste',
+      value: 300
+   },
+   {
+      id: 3,
+      title: 'Teste 3',
+      description: 'Descricao teste',
+      value: 300
+   },
+   {
+      id: 4,
+      title: 'Teste 4',
+      description: 'Descricao teste',
+      value: 300
+   },
+   ]
 
-      try {
-         await api.post('/ongs/addImage', data,
-            {
-               headers: {
-                  Authorization: ongId
-               }
-            })
-
-         history.push('/profile')
-
-      } catch (error) {
-         alertReact.error('Erro em cadastrar caso')
-
-      }
-
-   }
-
-   const handleImage = (file, event) => {
-
-      const arquivo = file[0]
-
-      var reader = new FileReader()
-
-      reader.readAsDataURL(arquivo)
-
-      reader.onload = function () {
-         setImage(reader.result)
-      }
-
+   function handleLogout() {
+      localStorage.clear()
+      history.push('/')
    }
 
    return (
-      <div className="aboutme-container">
-         <div className="content">
-            <section>
-               <img src={logoImg} alt="Be The Hero" />
-               <h1>Adicione uma imagem</h1>
-               <p>Descreva sua ONG ou projeto social com o intuito de divulgar o seu trabalho para o público</p>
+      <div className="about-container">
+         <header>
+            <img src={logoImg} alt="Be The Hero" />
+            <span>Bem vinda, {ongName}</span>
 
-               <Link className="back-link" to="/profile">
-                  <FiArrowLeft className="arrow-left"/>
-                  Voltar para home
-               </Link>
-            </section>
-            <form onSubmit={handleAddNewImage}>
-               <div className="file-drop">
-                  <FileDrop
-                     onDrop={(files, event) => {
-                        handleImage(files, event)
-                        alertReact.success('Imagem adicionada!')
-                     }}
-                  >Arraste e solte a imagem aqui! <FiFileMinus className="file-minus" />
-                  </FileDrop>
-               </div>
-               <textarea
-                  placeholder="Descrição da imagem"
-                  value={description}
-                  onChange={e => { setDescription(e.target.value) }}
-                  required={true}
-               />
-               <button className="button">Adicionar</button>
-            </form>
-         </div>
+            <Link className="button" to="/home" style={{ width: 140 }}>Home</Link>
+            <Link className="button" to="/images/new" style={{ width: 230, marginLeft: 16 }}>Adicionar imagem</Link>
+            <button onClick={handleLogout} type="button">
+               <FiPower size={18} color="#e02041" />
+            </button>
+         </header>
+         <h1>Fotos</h1>
+         <ul>
+            {incidents.map(incident => (
+               <li key={incident.id}>
+                  <strong>Caso:</strong>
+                  <p>{incident.title}</p>
+
+                  <strong>Descrição:</strong>
+                  <p>{incident.description}</p>
+
+                  <strong>Valor:</strong>
+                  <p>{Intl.NumberFormat('pt-BR', { style: 'currency', currency: 'BRL' }).format(incident.value)}</p>
+
+                  <button onClick={() => { }} type="button">
+                     <FiTrash2 size={20} color="#a8a8b3" />
+                  </button>
+               </li>
+            ))}
+         </ul>
       </div>
    )
-
-
 }
 
 export default AboutMe
