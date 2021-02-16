@@ -8,7 +8,7 @@ import api from '../../services/api'
 import logoImg from '../../assets/logo.svg'
 import './styles.css'
 
-function Profile() {
+function Home() {
    const [incidents, setIncidents] = useState([])
 
    const ongName = localStorage.getItem('ongName')
@@ -56,7 +56,7 @@ function Profile() {
             <span>Bem vinda, {ongName}</span>
 
             <Link className="button" to="/incidents/new">Cadastar novo caso</Link>
-            <Link className="button" to="/aboutme" style={{ width: 160, marginLeft: 16 }}>Sobre mim</Link>
+            <Link className="button" to="/profile" style={{ width: 160, marginLeft: 16 }}>Perfil</Link>
             <button onClick={handleLogout} type="button">
                <FiPower size={18} color="#e02041" />
             </button>
@@ -85,4 +85,4 @@ function Profile() {
 
 }
 
-export default Profile
+export default Home
