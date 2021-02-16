@@ -3,8 +3,9 @@ import { BrowserRouter, Route, Switch } from 'react-router-dom'
 
 import Logon from './pages/Logon/index'
 import Register from './pages/Register/index'
-import Profile from './pages/Profile/index'
+import Home from './pages/Home/index'
 import NewIncident from './pages/NewIncident/index'
+import AddNewImage from './pages/AddNewImage/index'
 import AboutMe from './pages/AboutMe/index'
 
 export default function Routes() {
@@ -13,9 +14,10 @@ export default function Routes() {
          <Switch>
             <Route path="/" exact component={Logon} />
             <Route path="/register" component={Register} /> 
-            <Route path="/profile" component={Profile} />  
+            <Route path="/home" component={Home} />  
             <Route path="/incidents/new" component={NewIncident} />  
-            <Route path="/aboutme" component={AboutMe} />  
+            <Route path="/profile" component={AboutMe} />  
+            <Route path="/images/new" component={AddNewImage} />  
          </Switch>
       </BrowserRouter>
    )
