@@ -26,7 +26,7 @@ function Logon() {
          localStorage.setItem('ongId', id)
          localStorage.setItem('ongName', res.data.Name)
 
-         history.push('/profile')
+         history.push('/home')
       } catch (error) {
          alertReact.error('Falha no login')
 
