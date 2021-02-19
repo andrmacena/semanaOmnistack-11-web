@@ -1,9 +1,12 @@
 import React from 'react'
 import { Link, useHistory } from 'react-router-dom'
 import { FiPower, FiTrash2 } from 'react-icons/fi'
+import AwesomeSlider from 'react-awesome-slider';
+import 'react-awesome-slider/dist/styles.css';
 import { useAlert } from "react-alert"
 
 import logoImg from '../../assets/logo.svg'
+import heroes from '../../assets/heroes.png'
 import './styles.css'
 
 function AboutMe() {
@@ -11,33 +14,6 @@ function AboutMe() {
    const ongName = localStorage.getItem('ongName')
 
    const history = useHistory()
-
-
-   const incidents = [{
-      id: 1,
-      title: 'Teste',
-      description: 'Descricao teste',
-      value: 300
-   },
-   {
-      id: 2,
-      title: 'Teste 2',
-      description: 'Descricao teste',
-      value: 300
-   },
-   {
-      id: 3,
-      title: 'Teste 3',
-      description: 'Descricao teste',
-      value: 300
-   },
-   {
-      id: 4,
-      title: 'Teste 4',
-      description: 'Descricao teste',
-      value: 300
-   },
-   ]
 
    function handleLogout() {
       localStorage.clear()
@@ -57,24 +33,15 @@ function AboutMe() {
             </button>
          </header>
          <h1>Fotos</h1>
-         <ul>
-            {incidents.map(incident => (
-               <li key={incident.id}>
-                  <strong>Caso:</strong>
-                  <p>{incident.title}</p>
+         <AwesomeSlider>
+            <div data-src={heroes} style={{ border: 5, width: '100%', height: '100%' }}/>
+            <div data-src={heroes} style={{ border: 5, width: '100%', height: '100%' }}/>
+            <div data-src={heroes} style={{ border: 5, width: '100%', height: '100%' }}/>
+            <div data-src={heroes} style={{ border: 5, width: '100%', height: '100%' }}/>
+         </AwesomeSlider>
+         <p>Testando a descricao da imagem</p>
 
-                  <strong>Descrição:</strong>
-                  <p>{incident.description}</p>
 
-                  <strong>Valor:</strong>
-                  <p>{Intl.NumberFormat('pt-BR', { style: 'currency', currency: 'BRL' }).format(incident.value)}</p>
-
-                  <button onClick={() => { }} type="button">
-                     <FiTrash2 size={20} color="#a8a8b3" />
-                  </button>
-               </li>
-            ))}
-         </ul>
       </div>
    )
 }
