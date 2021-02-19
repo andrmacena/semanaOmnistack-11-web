@@ -15,6 +15,7 @@ function Register() {
    const [whatsapp, setWhatsapp] = useState('')
    const [city, setCity] = useState('')
    const [uf, setUf] = useState('')
+   const [description, setDescription] = useState('')
 
    const history = useHistory()
    const alertReact = useAlert()
@@ -29,7 +30,8 @@ function Register() {
          email,
          whatsapp: whats,
          city,
-         uf
+         uf,
+         about_me: description
       }
 
       try {
@@ -63,6 +65,14 @@ function Register() {
                   placeholder="Nome da ONG"
                   value={name}
                   onChange={e => setName(e.target.value)}
+                  minLength={4}
+                  required={true}
+               />
+               <input
+                  name='name'
+                  placeholder="Detalhes da ONG"
+                  value={description}
+                  onChange={e => setDescription(e.target.value)}
                   minLength={4}
                   required={true}
                />
