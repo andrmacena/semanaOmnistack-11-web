@@ -1,5 +1,5 @@
 <h1 align="center">
-Be the Hero
+Be supportive: Incentive a colaboração!
 </h1>
 <h2 align="center">
 :computer: Desktop Preview :computer:
