@@ -10,6 +10,7 @@ import logoImg from '../../assets/logo.svg'
 import './styles.css'
 
 const stylesDescription = { display: 'flex', position: 'absolute', bottom: 10, fontSize: 20, left: 0, right: 0, marginLeft: 'auto', marginRight: 'auto', justifyContent: 'center' }
+const stylesImageSlider = { width: '100%', height: '100%' }
 
 function AboutMe() {
    const [images, setImages] = useState([])
@@ -49,7 +50,7 @@ function AboutMe() {
          <h1>Fotos</h1>
          <AwesomeSlider>
             {images.map(image => (
-               <div key={image.id} data-src={image.url_image} style={{ width: '100%', height: '100%' }}>
+               <div key={image.id} data-src={image.url_image} style={stylesImageSlider}>
                   <p style={stylesDescription}>{image.description}</p>
                </div>
             ))}
