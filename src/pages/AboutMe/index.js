@@ -1,19 +1,33 @@
-import React from 'react'
+import React, { useState, useEffect } from 'react'
 import { Link, useHistory } from 'react-router-dom'
-import { FiPower, FiTrash2 } from 'react-icons/fi'
+import { FiPower } from 'react-icons/fi'
 import AwesomeSlider from 'react-awesome-slider';
 import 'react-awesome-slider/dist/styles.css';
-import { useAlert } from "react-alert"
+
+import api from '../../services/api'
 
 import logoImg from '../../assets/logo.svg'
-import heroes from '../../assets/heroes.png'
 import './styles.css'
 
+const stylesDescription = { display: 'flex', position: 'absolute', bottom: 10, fontSize: 20, left: 0, right: 0, marginLeft: 'auto', marginRight: 'auto', justifyContent: 'center' }
+
 function AboutMe() {
+   const [images, setImages] = useState([])
 
    const ongName = localStorage.getItem('ongName')
+   const ongId = localStorage.getItem('ongId')
 
    const history = useHistory()
+
+   useEffect(() => {
+      api.get('/ongs/images', {
+         headers: {
+            Authorization: ongId
+         }
+      }).then(response => {
+         setImages(response.data)
+      })
+   }, [ongId])
 
    function handleLogout() {
       localStorage.clear()
@@ -34,14 +48,12 @@ function AboutMe() {
          </header>
          <h1>Fotos</h1>
          <AwesomeSlider>
-            <div data-src={heroes} style={{ border: 5, width: '100%', height: '100%' }}/>
-            <div data-src={heroes} style={{ border: 5, width: '100%', height: '100%' }}/>
-            <div data-src={heroes} style={{ border: 5, width: '100%', height: '100%' }}/>
-            <div data-src={heroes} style={{ border: 5, width: '100%', height: '100%' }}/>
+            {images.map(image => (
+               <div key={image.id} data-src={image.url_image} style={{ width: '100%', height: '100%' }}>
+                  <p style={stylesDescription}>{image.description}</p>
+               </div>
+            ))}
          </AwesomeSlider>
-         <p>Testando a descricao da imagem</p>
-
-
       </div>
    )
 }
