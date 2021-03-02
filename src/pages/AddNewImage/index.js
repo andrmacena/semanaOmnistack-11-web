@@ -34,7 +34,7 @@ function AddNewImage() {
                }
             })
 
-         history.push('/home')
+         history.push('/profile')
 
       } catch (error) {
          alertReact.error('Erro em cadastrar caso')
