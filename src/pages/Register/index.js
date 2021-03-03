@@ -40,7 +40,7 @@ function Register() {
 
          alertReact.info('Você receberá seu ID de acesso pelo email em instantes')
 
-         history.push('/')
+         history.push('/resend')
       } catch (error) {
          alertReact.error('Erro no cadastro, tente novamente')
       }
