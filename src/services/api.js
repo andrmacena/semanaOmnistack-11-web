@@ -1,7 +1,7 @@
 import axios from 'axios'
 
 const api = axios.create({
-   baseURL: 'https://bethehero-backend-11.herokuapp.com'
+   baseURL: 'https://besupportive.azurewebsites.net'
 })
 
 export default api
