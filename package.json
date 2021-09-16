@@ -22,7 +22,7 @@
     "react-router-dom": "^5.1.2",
     "react-scripts": "3.4.1",
     "serialize-javascript": "3.1.0",
-    "set-value": "2.0.1"
+    "set-value": "4.0.1"
   },
   "scripts": {
     "start": "react-scripts start",
